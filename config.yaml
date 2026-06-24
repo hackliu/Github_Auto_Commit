@@ -7,7 +7,7 @@
 git:
   # Target repository URL (HTTPS format, without embedded token).
   # Example: "https://github.com/your-username/your-repo.git"
-  repo_url: "https://github.com/USERNAME/REPO.git"
+  repo_url: "https://github.com/hackliu/Github_Auto_Commit.git"
 
   # Target branch to commit to.
   branch: "main"
