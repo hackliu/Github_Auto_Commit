@@ -1,0 +1,77 @@
+# =============================================================================
+# Git Auto-Commit Configuration
+# =============================================================================
+# This file controls all aspects of the auto-commit behavior.
+# Secrets (tokens) MUST be stored in a .env file, NEVER here.
+
+git:
+  # Target repository URL (HTTPS format, without embedded token).
+  # Example: "https://github.com/your-username/your-repo.git"
+  repo_url: "https://github.com/USERNAME/REPO.git"
+
+  # Target branch to commit to.
+  branch: "main"
+
+  # Name of the environment variable that holds the GitHub Personal Access Token.
+  # The token is read at runtime and prepended to the repo URL for authentication.
+  token_env_var: "GIT_AUTO_COMMIT_TOKEN"
+
+commit:
+  # ── Frequency ──────────────────────────────────────────────────────────────
+  # Minimum number of commits per day (inclusive).
+  min_daily: 0
+  # Maximum number of commits per day (inclusive).
+  # The actual count is randomly chosen between min_daily and max_daily each day.
+  max_daily: 8
+
+  # Minimum interval between two consecutive commits, in minutes.
+  min_interval_minutes: 30
+  # Maximum interval between two consecutive commits, in minutes.
+  # The actual interval is randomly chosen between these two values.
+  max_interval_minutes: 180
+
+  # ── Commit Messages ────────────────────────────────────────────────────────
+  # A list of commit message templates. One is randomly selected per commit.
+  # You can add, remove, or customize these to match your desired style.
+  messages:
+    - "📝 update activity log"
+    - "🔧 minor tweaks and improvements"
+    - "📊 refresh analytics data"
+    - "🔄 auto-sync: update records"
+    - "✅ complete daily checkpoint"
+    - "🐛 fix typo in documentation"
+    - "💡 add new idea to notes"
+    - "📌 pin progress update"
+    - "🎨 format code style"
+    - "⚡ performance optimization"
+    - "📚 update documentation"
+    - "🔒 security maintenance"
+    - "🌐 update dependencies"
+    - "✨ add small feature"
+    - "🗑️ cleanup deprecated code"
+    - "🔍 code review feedback"
+    - "📦 prepare release notes"
+    - "🛠️ refactor helper utilities"
+
+  # ── Target Files ───────────────────────────────────────────────────────────
+  # List of files to modify. At least one must exist in the target repository.
+  # The script will pick a random subset (1~all) for each commit.
+  # Common choices: activity.log, README.md, TODO.md, CHANGELOG.md
+  files:
+    - "activity.log"
+    - "README.md"
+
+# ── Runtime Options ───────────────────────────────────────────────────────
+# Local directory where the target repository will be cloned.
+working_dir: "./repo"
+
+# Logging level: DEBUG, INFO, WARNING, ERROR
+log_level: "INFO"
+
+# Active hours window (24-hour format, inclusive start, exclusive end).
+# Commits will only be generated during this time window.
+# Example: [8, 23] means 08:00 AM to 10:59 PM local time.
+active_hours: [8, 23]
+
+# If true, no commits will be generated on Saturdays and Sundays.
+skip_weekends: false

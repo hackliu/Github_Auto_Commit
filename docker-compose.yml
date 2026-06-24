@@ -1,0 +1,17 @@
+services:
+  git-auto-commit:
+    build: .
+    container_name: git-auto-commit
+    env_file:
+      - .env
+    environment:
+      - TZ=${TZ:-UTC}
+    volumes:
+      # Mount the config so you can tweak settings without rebuilding
+      - ./config.yaml:/app/config.yaml:ro
+      # Persist the cloned repository so it survives container restarts
+      - repo-data:/app/repo
+    restart: unless-stopped
+
+volumes:
+  repo-data:

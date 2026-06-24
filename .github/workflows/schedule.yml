@@ -1,0 +1,50 @@
+name: Git Auto Commit
+
+on:
+  schedule:
+    # Run twice per hour at off-peak minutes (7 and 37) to avoid the
+    # "round-number" cron pile-up.  The script internally randomises
+    # commit decisions, so not every run produces a commit.
+    #
+    # ┌───────── minute (0–59)
+    # │ ┌───────── hour (0–23 UTC)
+    # │ │ ┌───────── day of month (1–31)
+    # │ │ │ ┌───────── month (1–12)
+    # │ │ │ │ ┌───────── day of week (0–6, 0=Sun)
+    # │ │ │ │ │
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    # Allow manual trigger from the GitHub Actions UI
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout this repository (the orchestrator)
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Verify configuration
+        id: verify
+        run: |
+          if [ ! -f config.yaml ]; then
+            echo "❌ config.yaml not found" >&2
+            exit 1
+          fi
+          echo "✅ config.yaml present"
+        continue-on-error: true
+
+      - name: Run auto-commit (one-shot)
+        if: steps.verify.outcome == 'success'
+        env:
+          GIT_AUTO_COMMIT_TOKEN: ${{ secrets.GIT_AUTO_COMMIT_TOKEN }}
+        run: python -m src.main --once
