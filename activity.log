@@ -8,3 +8,4 @@
 [2026-06-25 15:31:41 UTC] API rate usage: 23% of limit
 [2026-06-25 17:33:24 UTC] system heartbeat check passed
 [2026-06-25 19:28:42 UTC] scheduled task 'cleanup_tmp' completed
+[2026-06-25 23:01:43 UTC] logging rotation triggered — 14 files archived
