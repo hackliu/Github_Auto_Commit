@@ -65,9 +65,8 @@ commit:
   # Name and email used for commits.  To have commits count toward your
   # GitHub contribution graph, set user_email to an email address that is
   # verified on your GitHub account (Settings → Emails).
-  #
-  # user_name: "Your Name"           # ← replace with your name
-  # user_email: "your@email.com"     # ← replace with your verified GitHub email
+  user_name: "hackliu"
+  user_email: "6386919+hackliu@users.noreply.github.com"
 
 # ── Runtime Options ───────────────────────────────────────────────────────
 # Local directory where the target repository will be cloned.
