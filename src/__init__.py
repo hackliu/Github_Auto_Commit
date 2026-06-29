@@ -3,4 +3,4 @@
 Simulates realistic, configurable commit activity on a target GitHub repository.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
