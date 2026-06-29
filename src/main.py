@@ -119,6 +119,26 @@ def _seconds_until_next_window(cfg: AppConfig) -> float:
     return max(0.0, delta)
 
 
+def _seconds_until_tomorrow_window(cfg: AppConfig) -> float:
+    """Return seconds until tomorrow's active-hours window opens.
+
+    Unlike ``_seconds_until_next_window``, this NEVER returns 0 when
+    called from inside today's window — it always targets the next
+    calendar day's window start.  Used after a daily cycle completes
+    to prevent immediately re-entering a new cycle.
+    """
+    now = datetime.now()
+    start, _ = cfg.active_hours
+    # Build tomorrow at ``start`` o'clock
+    candidate = now.replace(hour=start, minute=0, second=0, microsecond=0)
+    if candidate <= now:
+        candidate += timedelta(days=1)
+    # Fast-forward past weekends
+    while cfg.skip_weekends and candidate.weekday() >= 5:
+        candidate += timedelta(days=1)
+    return max(0.0, (candidate - now).total_seconds())
+
+
 def _safe_sleep(seconds: float, *, check_active: bool = False, cfg: AppConfig | None = None) -> None:
     """Sleep for *seconds*, but remain responsive to shutdown signals.
 
@@ -168,6 +188,7 @@ def _execute_one_commit(cfg: AppConfig, repo_dir: Path) -> bool:
     """
     filename = _pick_random_file(cfg)
     file_path = repo_dir / filename
+    logger.debug("Selected target file: %s (exists: %s)", filename, file_path.exists())
 
     # Read existing content (if the file exists)
     existing = ""
@@ -184,7 +205,7 @@ def _execute_one_commit(cfg: AppConfig, repo_dir: Path) -> bool:
     # Apply the change
     name_lower = filename.lower()
     try:
-        if name_lower == "readme.md" or name_lower.endswith(".md"):
+        if name_lower.endswith(".md"):
             # The README generator returns full updated content
             file_path.write_text(new_content, encoding="utf-8")
         else:
@@ -194,6 +215,12 @@ def _execute_one_commit(cfg: AppConfig, repo_dir: Path) -> bool:
     except (OSError, PermissionError) as exc:
         logger.error("❌ Cannot write %s: %s", file_path, exc)
         return False
+
+    # Defensive: verify the file actually exists after the write attempt
+    if not file_path.exists():
+        logger.error("❌ File %s does not exist after write attempt!", file_path)
+        return False
+    logger.debug("File size after write: %d bytes", file_path.stat().st_size)
 
     logger.info("✏️  Modified: %s", filename)
 
@@ -212,10 +239,50 @@ def _execute_one_commit(cfg: AppConfig, repo_dir: Path) -> bool:
 
 
 def run_once(cfg: AppConfig, token: str) -> None:
-    """Generate a single commit and exit (one-shot mode)."""
-    repo_dir = clone_or_pull(cfg, token)
+    """Generate a single commit and exit (one-shot mode).
+
+    Exits with code 0 on clean skip (outside active window) or success.
+    Exits with code 1 when the commit cycle fails, so that schedulers
+    (cron, GitHub Actions) can alert on repeated failures.
+    """
+    logger.info("🎯 One-shot mode")
+
+    # ── Respect active-hours / skip-weekends ────────────────────────────
+    if not _is_in_active_window(cfg):
+        reason_parts = [
+            f"outside active window ({cfg.active_hours[0]}:00–{cfg.active_hours[1]}:00)",
+        ]
+        if cfg.skip_weekends and datetime.now().weekday() >= 5:
+            reason_parts.append("weekend skipped")
+        logger.info("⏳ Skipping run — %s.", ", ".join(reason_parts))
+        return  # clean exit — not an error, just outside the window
+
+    # ── Clone / pull ────────────────────────────────────────────────────
+    try:
+        repo_dir = clone_or_pull(cfg, token)
+    except RuntimeError as exc:
+        logger.error("❌ Failed to clone or pull repository: %s", exc)
+        sys.exit(1)
+
     configure_git_user(repo_dir)
-    _execute_one_commit(cfg, repo_dir)
+
+    # ── Execute commit cycle ─────────────────────────────────────────────
+    try:
+        success = _execute_one_commit(cfg, repo_dir)
+    except RuntimeError as exc:
+        logger.error("❌ Commit/push failed after all retries: %s", exc)
+        sys.exit(1)
+
+    if success:
+        logger.info("✅ One-shot commit cycle completed successfully.")
+    else:
+        logger.error(
+            "❌ One-shot commit cycle did NOT produce a commit.\n"
+            "   Check the log messages above for the specific reason\n"
+            "   (file read/write error, git staging failure, or "
+            "'no changes detected')."
+        )
+        sys.exit(1)
 
 
 def run_daemon(cfg: AppConfig, token: str) -> None:
@@ -257,7 +324,11 @@ def run_daemon(cfg: AppConfig, token: str) -> None:
 
         if target == 0:
             logger.info("😴 Zero commits scheduled today — sleeping until next window")
-            wait = _seconds_until_next_window(cfg)
+            wait = _seconds_until_tomorrow_window(cfg)
+            logger.info(
+                "💤 Sleeping %s until next active window",
+                str(timedelta(seconds=int(wait))),
+            )
             _safe_sleep(wait)
             continue
 
@@ -300,9 +371,11 @@ def run_daemon(cfg: AppConfig, token: str) -> None:
 
         logger.info("🏁 Daily run complete — %d commits made", commits_done)
 
-        # Sleep until the next day's window
+        # Sleep until *tomorrow's* window (not today's — we already hit our
+        # target, and _seconds_until_next_window would return 0 if we're
+        # still inside the active window, causing an immediate re-entry).
         if _keep_running:
-            wait = _seconds_until_next_window(cfg)
+            wait = _seconds_until_tomorrow_window(cfg)
             logger.info(
                 "💤 Sleeping %s until next active window",
                 str(timedelta(seconds=int(wait))),
@@ -348,7 +421,6 @@ def main() -> None:
     token = get_token(cfg)
 
     if args.once:
-        logger.info("🎯 One-shot mode")
         run_once(cfg, token)
     else:
         run_daemon(cfg, token)

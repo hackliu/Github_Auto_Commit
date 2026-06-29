@@ -40,11 +40,25 @@ jobs:
             echo "❌ config.yaml not found" >&2
             exit 1
           fi
-          echo "✅ config.yaml present"
-        continue-on-error: true
+          if ! python -c "import yaml; yaml.safe_load(open('config.yaml'))" 2>/dev/null; then
+            echo "❌ config.yaml is not valid YAML" >&2
+            exit 1
+          fi
+          echo "✅ config.yaml present and valid"
+
+      - name: Verify token secret is set
+        id: verify-token
+        env:
+          GIT_AUTO_COMMIT_TOKEN: ${{ secrets.GIT_AUTO_COMMIT_TOKEN }}
+        run: |
+          if [ -z "$GIT_AUTO_COMMIT_TOKEN" ]; then
+            echo "❌ GIT_AUTO_COMMIT_TOKEN secret is empty or not set" >&2
+            exit 1
+          fi
+          echo "✅ Token secret is set (length: ${#GIT_AUTO_COMMIT_TOKEN})"
 
       - name: Run auto-commit (one-shot)
-        if: steps.verify.outcome == 'success'
+        if: steps.verify.outcome == 'success' && steps.verify-token.outcome == 'success'
         env:
           GIT_AUTO_COMMIT_TOKEN: ${{ secrets.GIT_AUTO_COMMIT_TOKEN }}
         run: python -m src.main --once

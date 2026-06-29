@@ -106,11 +106,11 @@ def _replace_or_append_footer(
     # Otherwise (no trailing blanks), add two newlines for separation.
     trailing_blanks = len(result) - len(result.rstrip("\n"))
     if trailing_blanks >= 2:
-        sep = "\n"  # already has blank-line separation
+        sep = ""    # blank-line separation already present — don't add another
     elif trailing_blanks == 1:
-        sep = "\n"  # one more gives a blank line
+        sep = "\n"  # one more newline creates the blank line
     else:
-        sep = "\n\n"
+        sep = "\n\n"  # two newlines: one to end the last line, one blank
     return result + sep + new_line + "\n"
 
 
@@ -188,10 +188,10 @@ def generate_content(filename: str, existing_content: str = "") -> str:
     """
     name_lower = filename.lower()
 
-    if name_lower == "readme.md" or name_lower.endswith(".md"):
+    if name_lower.endswith(".md"):
         return generate_readme_footer(existing_content)
 
-    if name_lower.endswith(".log") or name_lower == "activity.log" or name_lower.endswith(".txt"):
+    if name_lower.endswith(".log") or name_lower.endswith(".txt"):
         return generate_log_entry()
 
     # Fallback: emoji + phrase (keeps any file type looking alive)

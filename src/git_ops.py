@@ -349,7 +349,12 @@ def commit_and_push(
             logger.warning("⚠️  File not found, skipping add: %s", file_path)
 
     if not staged:
-        logger.warning("⚠️  No files could be staged — nothing to do.")
+        logger.warning(
+            "⚠️  No files could be staged — nothing to do. "
+            "Checked files: %s in %s",
+            files,
+            repo_dir,
+        )
         return False
 
     # Check if there is anything to commit
@@ -359,8 +364,17 @@ def commit_and_push(
         logger.error("❌ Failed to check git status")
         return False
 
+    logger.debug("git status --porcelain output: %r", status.stdout)
+
     if not status.stdout.strip():
-        logger.info("ℹ️  No changes detected — nothing to commit.")
+        logger.warning(
+            "ℹ️  No changes detected despite staging %d file(s) (%s).\n"
+            "    This can happen if the file content was not actually\n"
+            "    modified (e.g. footer re-generation produced identical\n"
+            "    output) or if the target file is listed in .gitignore.",
+            len(files),
+            ", ".join(files),
+        )
         return False
 
     logger.debug("Changes:\n%s", status.stdout)
@@ -457,7 +471,10 @@ def configure_git_user(
 
     These settings only affect the local repo (no ``--global``), so they will
     not interfere with the user's personal git configuration.
+
+    Uses the retry wrapper so transient lock-file or filesystem issues
+    don't cause a full run failure.
     """
-    _run(["git", "config", "user.name", name], cwd=repo_dir)
-    _run(["git", "config", "user.email", email], cwd=repo_dir)
+    _retry_git_op("configure user.name", ["git", "config", "user.name", name], cwd=repo_dir)
+    _retry_git_op("configure user.email", ["git", "config", "user.email", email], cwd=repo_dir)
     logger.debug("Git user configured: %s <%s>", name, email)
