@@ -264,7 +264,7 @@ def run_once(cfg: AppConfig, token: str) -> None:
         logger.error("❌ Failed to clone or pull repository: %s", exc)
         sys.exit(1)
 
-    configure_git_user(repo_dir)
+    configure_git_user(repo_dir, name=cfg.commit.user_name, email=cfg.commit.user_email)
 
     # ── Execute commit cycle ─────────────────────────────────────────────
     try:
@@ -292,7 +292,7 @@ def run_daemon(cfg: AppConfig, token: str) -> None:
     _setup_signal_handlers()
 
     repo_dir = clone_or_pull(cfg, token)
-    configure_git_user(repo_dir)
+    configure_git_user(repo_dir, name=cfg.commit.user_name, email=cfg.commit.user_email)
 
     logger.info("🚀 Daemon started — press Ctrl+C to stop")
 

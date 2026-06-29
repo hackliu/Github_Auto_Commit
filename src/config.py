@@ -37,6 +37,8 @@ class CommitConfig:
     max_interval_minutes: int = 180
     messages: List[str] = field(default_factory=list)
     files: List[str] = field(default_factory=lambda: ["activity.log"])
+    user_name: str = "auto-commit-bot"
+    user_email: str = "auto-commit-bot@users.noreply.github.com"
 
 
 @dataclass
@@ -271,6 +273,8 @@ def load_config(config_path: str = "config.yaml") -> AppConfig:
         max_interval_minutes=int(commit_raw.get("max_interval_minutes", 180)),
         messages=list(messages),
         files=list(files),
+        user_name=str(commit_raw.get("user_name", "auto-commit-bot")),
+        user_email=str(commit_raw.get("user_email", "auto-commit-bot@users.noreply.github.com")),
     )
 
     # --- Top-level ---
