@@ -44,3 +44,4 @@
 [2026-07-02 22:43:11 UTC] webhook delivery retry queue empty
 [2026-07-03 10:47:45 UTC] daily backup verification: OK
 [2026-07-03 15:23:48 UTC] scheduled task 'cleanup_tmp' completed
+[2026-07-04 09:47:58 UTC] logging rotation triggered — 14 files archived
