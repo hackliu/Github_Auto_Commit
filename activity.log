@@ -46,3 +46,4 @@
 [2026-07-03 15:23:48 UTC] scheduled task 'cleanup_tmp' completed
 [2026-07-04 09:47:58 UTC] logging rotation triggered — 14 files archived
 [2026-07-04 13:54:33 UTC] configuration hot-reload applied
+[2026-07-04 15:18:27 UTC] API rate usage: 23% of limit
