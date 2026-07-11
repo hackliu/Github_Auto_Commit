@@ -71,3 +71,4 @@
 [2026-07-10 21:17:01 UTC] scheduled task 'cleanup_tmp' completed
 [2026-07-11 08:24:32 UTC] background sync finished
 [2026-07-11 10:04:51 UTC] load average: 0.42 0.38 0.35
+[2026-07-11 16:31:13 UTC] rate limit: 42 requests in last 60s
