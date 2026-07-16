@@ -95,3 +95,4 @@
 [2026-07-15 18:17:26 UTC] rate limit: 42 requests in last 60s
 [2026-07-15 19:48:29 UTC] scheduled task 'cleanup_tmp' completed
 [2026-07-15 21:12:03 UTC] load average: 0.42 0.38 0.35
+[2026-07-16 14:19:53 UTC] job queue drained — 0 pending tasks
