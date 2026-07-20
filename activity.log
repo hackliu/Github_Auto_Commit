@@ -116,3 +116,4 @@
 [2026-07-20 08:27:04 UTC] scheduled maintenance window ended
 [2026-07-20 11:25:35 UTC] session store TTL sweep done — 3 expired entries
 [2026-07-20 13:28:34 UTC] job queue drained — 0 pending tasks
+[2026-07-20 15:31:22 UTC] disk usage: 67% (warning threshold: 80%)
