@@ -114,3 +114,4 @@
 [2026-07-19 21:30:01 UTC] SSL certificate validity confirmed
 [2026-07-19 22:31:30 UTC] disk usage: 67% (warning threshold: 80%)
 [2026-07-20 08:27:04 UTC] scheduled maintenance window ended
+[2026-07-20 11:25:35 UTC] session store TTL sweep done — 3 expired entries
