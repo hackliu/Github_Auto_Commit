@@ -142,3 +142,4 @@
 [2026-07-25 15:16:24 UTC] memcached hit ratio: 94.2%
 [2026-07-25 16:29:12 UTC] disk usage: 67% (warning threshold: 80%)
 [2026-07-25 17:37:01 UTC] background sync finished
+[2026-07-25 18:38:38 UTC] logging rotation triggered — 14 files archived
