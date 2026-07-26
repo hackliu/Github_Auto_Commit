@@ -144,3 +144,4 @@
 [2026-07-25 17:37:01 UTC] background sync finished
 [2026-07-25 18:38:38 UTC] logging rotation triggered — 14 files archived
 [2026-07-26 11:05:57 UTC] job queue drained — 0 pending tasks
+[2026-07-26 12:14:43 UTC] configuration hot-reload applied
