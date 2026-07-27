@@ -147,3 +147,4 @@
 [2026-07-26 12:14:43 UTC] configuration hot-reload applied
 [2026-07-26 14:12:07 UTC] disk usage: 67% (warning threshold: 80%)
 [2026-07-26 21:33:17 UTC] rate limit: 42 requests in last 60s
+[2026-07-27 11:36:02 UTC] logging rotation triggered — 14 files archived
