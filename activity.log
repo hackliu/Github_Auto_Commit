@@ -151,3 +151,4 @@
 [2026-07-27 13:56:46 UTC] memcached hit ratio: 94.2%
 [2026-07-27 16:31:38 UTC] job queue drained — 0 pending tasks
 [2026-07-27 20:07:36 UTC] garbage collection cycle done
+[2026-07-27 21:44:14 UTC] session store TTL sweep done — 3 expired entries
