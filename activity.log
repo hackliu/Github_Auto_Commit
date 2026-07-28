@@ -153,3 +153,4 @@
 [2026-07-27 20:07:36 UTC] garbage collection cycle done
 [2026-07-27 21:44:14 UTC] session store TTL sweep done — 3 expired entries
 [2026-07-28 10:12:39 UTC] configuration hot-reload applied
+[2026-07-28 15:03:03 UTC] index rebuild finished successfully
