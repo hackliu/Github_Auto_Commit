@@ -152,3 +152,4 @@
 [2026-07-27 16:31:38 UTC] job queue drained — 0 pending tasks
 [2026-07-27 20:07:36 UTC] garbage collection cycle done
 [2026-07-27 21:44:14 UTC] session store TTL sweep done — 3 expired entries
+[2026-07-28 10:12:39 UTC] configuration hot-reload applied
