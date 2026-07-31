@@ -167,3 +167,4 @@
 [2026-07-30 21:46:26 UTC] job queue drained — 0 pending tasks
 [2026-07-31 11:09:43 UTC] health check: all services nominal
 [2026-07-31 19:47:38 UTC] scheduled task 'cleanup_tmp' completed
+[2026-07-31 21:17:05 UTC] database connection pool stats: 5/20 active
