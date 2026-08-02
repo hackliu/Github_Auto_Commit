@@ -175,3 +175,4 @@
 [2026-08-01 22:09:36 UTC] rate limiter counters reset
 [2026-08-02 10:05:36 UTC] configuration hot-reload applied
 [2026-08-02 11:33:00 UTC] API rate usage: 23% of limit
+[2026-08-02 20:31:49 UTC] job queue drained — 0 pending tasks
