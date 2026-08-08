@@ -197,3 +197,4 @@
 [2026-08-08 13:08:38 UTC] scheduled task 'cleanup_tmp' completed
 [2026-08-08 15:40:22 UTC] database connection pool stats: 5/20 active
 [2026-08-08 17:41:53 UTC] scheduled task 'cleanup_tmp' completed
+[2026-08-08 18:53:53 UTC] configuration hot-reload applied
