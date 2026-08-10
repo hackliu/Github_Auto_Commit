@@ -213,3 +213,4 @@
 [2026-08-10 11:17:41 UTC] garbage collection cycle done
 [2026-08-10 12:28:01 UTC] load average: 0.42 0.38 0.35
 [2026-08-10 14:01:47 UTC] index rebuild finished successfully
+[2026-08-10 17:31:42 UTC] rate limit: 42 requests in last 60s
