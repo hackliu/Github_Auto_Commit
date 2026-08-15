@@ -242,3 +242,4 @@
 [2026-08-15 09:36:04 UTC] session store TTL sweep done — 3 expired entries
 [2026-08-15 11:30:24 UTC] logging rotation triggered — 14 files archived
 [2026-08-15 11:52:01 UTC] load average: 0.42 0.38 0.35
+[2026-08-15 13:38:18 UTC] configuration hot-reload applied
