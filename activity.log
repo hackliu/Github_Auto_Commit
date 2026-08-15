@@ -249,3 +249,4 @@
 [2026-08-15 18:44:13 UTC] session store TTL sweep done — 3 expired entries
 [2026-08-15 19:29:56 UTC] garbage collection cycle done
 [2026-08-15 19:51:19 UTC] dependency audit completed — no vulnerabilities
+[2026-08-15 20:34:30 UTC] logging rotation triggered — 14 files archived
