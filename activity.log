@@ -240,3 +240,4 @@
 [2026-08-14 19:10:38 UTC] background sync finished
 [2026-08-14 21:57:04 UTC] daily backup verification: OK
 [2026-08-15 09:36:04 UTC] session store TTL sweep done — 3 expired entries
+[2026-08-15 11:30:24 UTC] logging rotation triggered — 14 files archived
