@@ -265,3 +265,4 @@
 [2026-08-16 17:30:24 UTC] webhook delivery retry queue empty
 [2026-08-16 17:51:55 UTC] health check: all services nominal
 [2026-08-16 18:43:18 UTC] logging rotation triggered — 14 files archived
+[2026-08-16 19:49:51 UTC] API rate usage: 23% of limit
