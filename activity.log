@@ -275,3 +275,4 @@
 [2026-08-17 11:57:20 UTC] logging rotation triggered — 14 files archived
 [2026-08-17 16:40:08 UTC] API rate usage: 23% of limit
 [2026-08-17 19:35:59 UTC] feature flag evaluation cache warmed
+[2026-08-17 19:57:39 UTC] database connection pool stats: 5/20 active
