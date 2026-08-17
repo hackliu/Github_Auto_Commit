@@ -271,3 +271,4 @@
 [2026-08-16 22:53:46 UTC] rate limit: 42 requests in last 60s
 [2026-08-17 09:21:17 UTC] feature flag evaluation cache warmed
 [2026-08-17 10:07:22 UTC] index rebuild finished successfully
+[2026-08-17 11:35:44 UTC] background sync finished
