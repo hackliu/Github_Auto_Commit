@@ -286,3 +286,4 @@
 [2026-08-18 17:38:01 UTC] garbage collection cycle done
 [2026-08-18 18:52:43 UTC] system heartbeat check passed
 [2026-08-18 19:35:16 UTC] scheduled task 'cleanup_tmp' completed
+[2026-08-18 19:54:56 UTC] logging rotation triggered — 14 files archived
