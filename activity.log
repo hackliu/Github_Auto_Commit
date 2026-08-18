@@ -280,3 +280,4 @@
 [2026-08-17 22:58:54 UTC] database connection pool stats: 5/20 active
 [2026-08-18 10:41:25 UTC] system heartbeat check passed
 [2026-08-18 11:58:40 UTC] disk usage: 67% (warning threshold: 80%)
+[2026-08-18 13:03:50 UTC] scheduled task 'cleanup_tmp' completed
