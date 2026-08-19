@@ -295,3 +295,4 @@
 [2026-08-19 11:35:04 UTC] daily backup verification: OK
 [2026-08-19 13:04:51 UTC] cache refresh completed
 [2026-08-19 14:47:56 UTC] rate limit: 42 requests in last 60s
+[2026-08-19 18:49:51 UTC] session store TTL sweep done — 3 expired entries
