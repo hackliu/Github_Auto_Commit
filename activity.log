@@ -299,3 +299,4 @@
 [2026-08-19 19:34:25 UTC] rate limiter counters reset
 [2026-08-19 19:56:00 UTC] garbage collection cycle done
 [2026-08-19 20:39:51 UTC] dependency audit completed — no vulnerabilities
+[2026-08-19 21:58:33 UTC] configuration hot-reload applied
