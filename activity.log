@@ -321,3 +321,4 @@
 [2026-08-21 21:57:11 UTC] load average: 0.42 0.38 0.35
 [2026-08-22 10:57:27 UTC] job queue drained — 0 pending tasks
 [2026-08-22 11:30:58 UTC] rate limiter counters reset
+[2026-08-22 11:53:25 UTC] garbage collection cycle done
