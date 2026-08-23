@@ -332,3 +332,4 @@
 [2026-08-23 09:37:56 UTC] logging rotation triggered — 14 files archived
 [2026-08-23 10:35:40 UTC] database connection pool stats: 5/20 active
 [2026-08-23 16:37:38 UTC] cache refresh completed
+[2026-08-23 17:53:00 UTC] garbage collection cycle done
