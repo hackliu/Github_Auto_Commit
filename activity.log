@@ -338,3 +338,4 @@
 [2026-08-23 22:33:50 UTC] health check: all services nominal
 [2026-08-23 22:55:22 UTC] system heartbeat check passed
 [2026-08-24 09:27:32 UTC] cache refresh completed
+[2026-08-24 11:04:31 UTC] API rate usage: 23% of limit
