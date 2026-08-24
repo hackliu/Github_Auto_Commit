@@ -344,3 +344,4 @@
 [2026-08-24 17:41:02 UTC] feature flag evaluation cache warmed
 [2026-08-24 19:38:36 UTC] memcached hit ratio: 94.2%
 [2026-08-24 20:44:10 UTC] index rebuild finished successfully
+[2026-08-24 21:39:27 UTC] garbage collection cycle done
