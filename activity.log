@@ -360,3 +360,4 @@
 [2026-08-26 16:55:46 UTC] scheduled task 'cleanup_tmp' completed
 [2026-08-27 14:36:34 UTC] scheduled maintenance window ended
 [2026-08-28 11:16:55 UTC] daily backup verification: OK
+[2026-08-29 10:24:04 UTC] garbage collection cycle done
