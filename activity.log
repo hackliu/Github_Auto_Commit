@@ -363,3 +363,4 @@
 [2026-08-29 10:24:04 UTC] garbage collection cycle done
 [2026-08-29 15:17:28 UTC] logging rotation triggered — 14 files archived
 [2026-08-30 11:50:08 UTC] configuration hot-reload applied
+[2026-08-30 16:36:35 UTC] rate limiter counters reset
