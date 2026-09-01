@@ -368,3 +368,4 @@
 [2026-08-30 22:01:56 UTC] configuration hot-reload applied
 [2026-09-01 10:00:12 UTC] API rate usage: 23% of limit
 [2026-09-01 14:48:22 UTC] rate limiter counters reset
+[2026-09-01 18:25:06 UTC] memcached hit ratio: 94.2%
