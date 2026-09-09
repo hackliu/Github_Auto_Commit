@@ -385,3 +385,4 @@
 [2026-09-06 17:19:36 UTC] rate limit: 42 requests in last 60s
 [2026-09-07 09:40:34 UTC] dependency audit completed — no vulnerabilities
 [2026-09-08 16:34:08 UTC] daily backup verification: OK
+[2026-09-09 10:04:35 UTC] session store TTL sweep done — 3 expired entries
