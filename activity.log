@@ -403,3 +403,4 @@
 [2026-09-15 10:00:07 UTC] cache refresh completed
 [2026-09-15 18:55:33 UTC] scheduled task 'cleanup_tmp' completed
 [2026-09-16 11:24:37 UTC] rate limiter counters reset
+[2026-09-16 22:05:53 UTC] logging rotation triggered — 14 files archived
