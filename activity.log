@@ -413,3 +413,4 @@
 [2026-09-19 20:33:40 UTC] job queue drained — 0 pending tasks
 [2026-09-19 22:28:19 UTC] logging rotation triggered — 14 files archived
 [2026-09-20 10:04:14 UTC] background sync finished
+[2026-09-20 14:11:40 UTC] API rate usage: 23% of limit
