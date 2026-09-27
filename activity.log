@@ -426,3 +426,4 @@
 [2026-09-26 18:32:18 UTC] rate limiter counters reset
 [2026-09-26 21:30:47 UTC] scheduled maintenance window ended
 [2026-09-27 10:43:03 UTC] job queue drained — 0 pending tasks
+[2026-09-27 15:37:27 UTC] session store TTL sweep done — 3 expired entries
