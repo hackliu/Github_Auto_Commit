@@ -458,3 +458,4 @@
 [2026-10-16 14:12:03 UTC] rate limit: 42 requests in last 60s
 [2026-10-17 13:09:33 UTC] configuration hot-reload applied
 [2026-10-17 21:42:54 UTC] index rebuild finished successfully
+[2026-10-22 20:32:13 UTC] scheduled task 'cleanup_tmp' completed
