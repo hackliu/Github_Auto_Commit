@@ -484,3 +484,4 @@
 [2026-11-11 22:20:15 UTC] garbage collection cycle done
 [2026-11-12 19:50:31 UTC] webhook delivery retry queue empty
 [2026-11-14 21:24:06 UTC] webhook delivery retry queue empty
+[2026-11-15 08:24:28 UTC] rate limit: 42 requests in last 60s
