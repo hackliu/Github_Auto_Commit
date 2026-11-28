@@ -497,3 +497,4 @@
 [2026-11-23 12:20:15 UTC] webhook delivery retry queue empty
 [2026-11-25 14:15:04 UTC] memcached hit ratio: 94.2%
 [2026-11-27 18:52:54 UTC] load average: 0.42 0.38 0.35
+[2026-11-28 18:25:00 UTC] API rate usage: 23% of limit
